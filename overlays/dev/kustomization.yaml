@@ -1,0 +1,13 @@
+bases:
+- ../../base
+
+patches:
+- path: replicas.yaml
+
+images:
+- name: kevmeans/python-microservice-test
+  newTag: 2672c95fdad5d99781b56bd0b0dfdba08c2b1375
+
+configMapGenerator:
+- name: mykustom-map
+  env: config.properties

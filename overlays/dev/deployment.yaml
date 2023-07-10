@@ -1,0 +1,61 @@
+apiVersion: v1
+data:
+  BG_COLOR: '#000000'
+  CUSTOM_HEADER: Dev!!
+  FONT_COLOR: '#FFFFFF'
+kind: ConfigMap
+metadata:
+  name: mykustom-map-ht8k2b48kk
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app: fast-api-app-annontations
+  labels:
+    app: fast-api-app
+  name: fast-api-v1
+spec:
+  ports:
+  - name: fast-api
+    port: 80
+    protocol: TCP
+  selector:
+    app: fast-api-app
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app: fast-api-app-annontations
+  labels:
+    app: fast-api-app
+  name: fast-api-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fast-api-app
+  template:
+    metadata:
+      annotations:
+        app: fast-api-app-annontations
+      labels:
+        app: fast-api-app
+    spec:
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: mykustom-map-ht8k2b48kk
+        image: kevmeans/python-microservice-test:2672c95fdad5d99781b56bd0b0dfdba08c2b1375
+        name: fast-api-container
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 16Mi
