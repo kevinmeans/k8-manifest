@@ -6,7 +6,7 @@ spec:
   generators:
     - pullRequest:
         github:
-          owner: kevmeans
+          owner: kevinmeans
           repo: python-microservice-test # (1)
           tokenRef:
             key: token
