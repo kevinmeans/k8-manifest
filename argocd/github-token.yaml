@@ -1,0 +1,2 @@
+ kubectl create secret generic github-token \
+  --from-literal=token=<GITHUB_PERSON_ACCESS_TOKEN>
