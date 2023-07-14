@@ -7,10 +7,10 @@ spec:
     - pullRequest:
         github:
           owner: kevinmeans
-          repo: python-microservice-test # (1)
+          repo: python-microservice-test
           tokenRef:
             key: token
-            secretName: github-token # (2)
+            secretName: github-token
         requeueAfterSeconds: 60
   template:
     metadata:
@@ -21,24 +21,21 @@ spec:
         server: 'https://kubernetes.default.svc'
       project: default
       source:
-        # (3)
+        
         path: preview/
         repoURL: 'https://github.com/kevinmeans/k8-manifest.git'
         targetRevision: HEAD
         helm:
           parameters:
-            # (4)
             - name: namespace
               value: 'preview-{{branch}}'
-            # (5)
             - name: version
               value: '{{head_sha}}'
-            # (6)
             - name: image
               value: kevmeans/python-microservice-test
             - name: name
               value: python-microservice-preview
-      # (7)
+      
       syncPolicy:
         automated:
           selfHeal: true
