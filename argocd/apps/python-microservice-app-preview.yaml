@@ -11,6 +11,8 @@ spec:
           tokenRef:
             key: token
             secretName: github-token
+          labels:
+          - deploy    
         requeueAfterSeconds: 60
   template:
     metadata:

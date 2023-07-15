@@ -14,3 +14,6 @@ spec:
     path: argocd/apps
     repoURL: https://github.com/kevinmeans/k8-manifest
     targetRevision: HEAD
+  syncPolicy:
+    automated:
+      selfHeal: true
