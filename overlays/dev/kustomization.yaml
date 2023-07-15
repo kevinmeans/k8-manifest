@@ -6,7 +6,7 @@ patches:
 
 images:
 - name: kevmeans/python-microservice-test
-  newTag: 937914166f4559ec433a42efd4b4781c90b6d33b
+  newTag: 0d43f099577d78df3b753eced9cdc976309454f1
 
 configMapGenerator:
 - name: mykustom-map
