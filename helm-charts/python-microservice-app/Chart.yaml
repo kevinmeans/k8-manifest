@@ -1,0 +1,6 @@
+apiVersion: v2
+name: python-microservice-app
+description: A Helm chart for Python-Micro-Service
+type: application
+version: 1.0.0
+appVersion: "1.0"
