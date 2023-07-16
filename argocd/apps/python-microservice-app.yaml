@@ -1,19 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: python-microservice-test
-  namespace: prod
+  name: python-microservice-prod
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
+    path: helm-charts/python-microservice-app
     repoURL: 'https://github.com/kevinmeans/k8-manifest'
-    path: overlays/dev
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - $values/helm-charts/python-microservice-app/environments/prod/values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: dev
+    namespace: prod
   syncPolicy:
     automated:
       prune: true
