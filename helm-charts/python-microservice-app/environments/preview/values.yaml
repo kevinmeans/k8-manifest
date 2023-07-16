@@ -1,4 +1,4 @@
 name: python-microservice
-image: kevmeans/python-microservice-test
-version: 1.0.0
+image: kevmeans/python-microservice
+version: latest
 namespace: preview

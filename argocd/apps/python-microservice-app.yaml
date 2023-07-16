@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: python-microservice-test
-  namespace: argocd
+  namespace: prod
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:

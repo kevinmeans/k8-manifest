@@ -22,16 +22,20 @@ spec:
         server: 'https://kubernetes.default.svc'
       project: default
       source:
-        path: helm-charts/python-microservice-app
-        repoURL: 'https://github.com/kevinmeans/k8-manifest'
+        path: preview/
+        repoURL: 'https://github.com/kevinmeans/k8-manifest.git'
         targetRevision: HEAD
         helm:
-          valueFiles:
-            - $values/helm-charts/python-microservice-app/environments/preview/values.yaml
           parameters:
-            # Overwrite version with branch-sha image tag from git pr
+            - name: namespace
+              value: 'preview'
             - name: version
-              value: '{{branch}}-{{head_sha}}'    
+              value: '{{branch}}-{{head_sha}}'
+            - name: image
+              value: kevmeans/python-microservice
+            - name: name
+              value: python-microservice-preview
+      
       syncPolicy:
         automated:
           selfHeal: true
