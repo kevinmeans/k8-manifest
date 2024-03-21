@@ -1,4 +1,4 @@
 name: python-microservice
 image: kevmeans/python-microservice
-version: 4a1c434177e37030d9947c3945c0540b11d51169
+version: 7e2bf7bafce6d408fedc152a95cf6049bad23545
 namespace: prod
